@@ -1,6 +1,4 @@
-// Mobile menu toggle
 document.addEventListener('DOMContentLoaded', function() {
-    // Mobile menu toggle
     const navToggle = document.getElementById('navToggle');
     const navMenu = document.getElementById('navMenu');
     
@@ -14,7 +12,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
-        // Close menu when clicking a link
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', function() {
                 navMenu.classList.remove('active');
@@ -26,7 +23,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
         
-        // Close menu when clicking outside
         document.addEventListener('click', function(e) {
             if (!navToggle.contains(e.target) && !navMenu.contains(e.target)) {
                 navMenu.classList.remove('active');
@@ -38,8 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-    
-    // Add active state to current page in nav
+
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
     document.querySelectorAll('.nav-link').forEach(link => {
         const href = link.getAttribute('href');
@@ -47,8 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
             link.classList.add('active');
         }
     });
-    
-    // Console easter egg
+
     console.log('%c NEFORCEO ', 'background: #009688; color: white; font-size: 20px; padding: 10px;');
     console.log('%c Welcome to my website! ', 'background: #455a64; color: white; font-size: 14px; padding: 5px;');
 });
