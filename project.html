@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects — NEFORCEO</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="img/neforicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Urbanist:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .projects-container {
+            padding: 40px;
+            background: var(--color-white);
+            border-radius: 24px;
+            max-width: 900px;
+            width: 100%;
+            margin: 0 auto 20px;
+        }
+
+        @media (min-width: 1024px) {
+            .projects-container {
+                padding: 60px;
+            }
+        }
+
+        .projects-intro {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .projects-intro p {
+            color: var(--color-text-gray);
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .section {
+            margin-bottom: 48px;
+        }
+
+        .section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            color: var(--color-total-black);
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-title i {
+            color: var(--color-brand-blue);
+        }
+
+        .project-card {
+            background: var(--color-gray);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 16px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: block;
+        }
+
+        .project-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .project-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+        }
+
+        .project-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        .project-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--color-brand-blue);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .project-name i {
+            font-size: 14px;
+            opacity: 0.6;
+        }
+
+        .project-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 13px;
+            color: var(--color-text-gray);
+        }
+
+        .project-meta span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .project-description {
+            color: var(--color-total-black);
+            font-size: 15px;
+            line-height: 1.7;
+            opacity: 0.8;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+        }
+
+        .tag {
+            font-size: 12px;
+            padding: 6px 12px;
+            border-radius: 8px;
+            background: var(--color-white);
+            color: var(--color-brand-blue);
+            font-weight: 500;
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        .github-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--color-brand-blue);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.2s ease;
+            margin-top: 32px;
+        }
+
+        .github-btn:hover {
+            background: #1f5fd9;
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 768px) {
+            .projects-container {
+                padding: 24px;
+            }
+
+            .project-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <i class="fab fa-github-alt"></i>
+                <span>NEFORCEO</span>
+            </a>
+            <button class="nav-toggle" id="navToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="project.html" class="nav-link">Projects</a></li>
+            </ul>
+            <div class="nav-social">
+                <a href="https://github.com/neforceo" target="_blank"><i class="fab fa-github-alt"></i></a>
+                <a href="https://t.me/neforndu" target="_blank"><i class="fab fa-telegram"></i></a>
+                <a href="https://vk.com/neforceo" target="_blank"><i class="fab fa-vk"></i></a>
+                <a href="mailto:n7for8572@gmail.com"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </nav>
+
+
+    <main class="main-content">
+        <div class="projects-container">
+            <div class="projects-intro">
+                <h1 class="page-title">Projects</h1>
+                <p>On this page, I'd like to share with you the projects I've created and continue to maintain.</p>
+            </div>
+
+            <section class="section">
+                <h2 class="section-title"><i class="fab fa-python"></i> Python Libraries</h2>
+
+                <a href="https://github.com/ndugram/fasthttp" target="_blank" class="project-card">
+                    <div class="project-header">
+                        <span class="project-name">fasthttp-client <i class="fas fa-arrow-up-right-from-square"></i></span>
+                        <div class="project-meta">
+                            <span><i class="fas fa-star"></i> New</span>
+                            <span>Python 3.10+</span>
+                        </div>
+                    </div>
+                    <p class="project-description">Modern HTTP client with decorators, async support, HTTP/2, rate limiting, and beautiful colored logging built on httpx.</p>
+                    <div class="project-tags">
+                        <span class="tag">Async</span>
+                        <span class="tag">HTTP/2</span>
+                        <span class="tag">Rate Limiting</span>
+                        <span class="tag">Middleware</span>
+                    </div>
+                </a>
+
+                <a href="https://github.com/ndugram/mkpy" target="_blank" class="project-card">
+                    <div class="project-header">
+                        <span class="project-name">mkpy-client <i class="fas fa-arrow-up-right-from-square"></i></span>
+                        <div class="project-meta">
+                            <span><i class="fas fa-star"></i> New</span>
+                            <span>Python 3.9+</span>
+                        </div>
+                    </div>
+                    <p class="project-description">Minimalistic documentation generator from Markdown files with auto-routing, themes, and built-in HTTP server.</p>
+                    <div class="project-tags">
+                        <span class="tag">Markdown</span>
+                        <span class="tag">Auto Routes</span>
+                        <span class="tag">CLI</span>
+                        <span class="tag">Themes</span>
+                    </div>
+                </a>
+
+                <a href="https://github.com/ndugram/fastgram-cli" target="_blank" class="project-card">
+                    <div class="project-header">
+                        <span class="project-name">fastgram-cli <i class="fas fa-arrow-up-right-from-square"></i></span>
+                        <div class="project-meta">
+                            <span><i class="fas fa-star"></i> New</span>
+                            <span>Python 3.10+</span>
+                        </div>
+                    </div>
+                    <p class="project-description">CLI tool for FastAPI developers. Initialize projects with Django-like structure, middleware, and SSL certificates.</p>
+                    <div class="project-tags">
+                        <span class="tag">FastAPI</span>
+                        <span class="tag">CLI</span>
+                        <span class="tag">SSL</span>
+                        <span class="tag">Middleware</span>
+                    </div>
+                </a>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title"><i class="fas fa-code"></i> VS Code Extensions</h2>
+
+                <a href="https://github.com/ndugram/ndu-dark" target="_blank" class="project-card">
+                    <div class="project-header">
+                        <span class="project-name">ndu-dark <i class="fas fa-arrow-up-right-from-square"></i></span>
+                        <div class="project-meta">
+                            <span>v1.1.0</span>
+                            <span>Theme</span>
+                        </div>
+                    </div>
+                    <p class="project-description">Dark theme for Visual Studio Code with floating glass-like panels, rounded corners, smooth animations, and warm syntax highlighting.</p>
+                    <div class="project-tags">
+                        <span class="tag">Glass Effect</span>
+                        <span class="tag">Floating Panels</span>
+                        <span class="tag">Animations</span>
+                        <span class="tag">Rounded</span>
+                    </div>
+                </a>
+            </section>
+
+            <div style="text-align: center;">
+                <a href="https://github.com/ndugram" target="_blank" class="github-btn">
+                    <i class="fab fa-github"></i> View all on GitHub
+                </a>
+            </div>
+        </div>
+    </main>
+
+
+    <footer class="footer">
+        <div class="footer-social">
+            <a href="https://github.com/neforceo" target="_blank"><i class="fab fa-github-alt"></i></a>
+            <a href="https://t.me/neforndu" target="_blank"><i class="fab fa-telegram"></i></a>
+            <a href="https://vk.com/neforceo" target="_blank"><i class="fab fa-vk"></i></a>
+            <a href="mailto:n7for8572@gmail.com"><i class="fas fa-envelope"></i></a>
+        </div>
+        <p class="footer-text">© 2026 NEFORCEO. All rights reserved.</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
