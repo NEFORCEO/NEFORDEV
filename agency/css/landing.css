@@ -355,11 +355,18 @@ header {
     }
 
     header {
-        display: none;
+        display: block;
+        position: fixed;
+        top: 12px;
+        right: 12px;
     }
 
     .brand-header {
-        display: none;
+        font-size: 1.5em;
+        letter-spacing: 12px;
+        padding-left: 12px;
+        padding-top: 30px;
+        padding-bottom: 20px;
     }
 
     .landing-card {
@@ -383,13 +390,14 @@ header {
     }
 
     .hero-desc {
-        font-size: 0.75rem;
+        font-size: 0.95rem;
         margin-bottom: 6px;
+        line-height: 1.5;
     }
 
     .hero-list {
-        font-size: 0.95rem;
-        line-height: 1.5;
+        font-size: 0.9rem;
+        line-height: 1.6;
         margin-bottom: 10px;
     }
 
