@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company — NEFORCEO</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="img/neforicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Urbanist:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .company-container {
+            padding: 40px;
+            background: var(--color-white);
+            border-radius: 24px;
+            max-width: 900px;
+            width: 100%;
+            margin: 0 auto 20px;
+        }
+
+        @media (min-width: 1024px) {
+            .company-container {
+                padding: 60px;
+            }
+        }
+
+        .company-hero {
+            text-align: center;
+            margin-bottom: 48px;
+            padding: 40px 20px;
+            background: var(--color-gray);
+            border-radius: 16px;
+        }
+
+        .company-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--color-brand-blue);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .company-hero h1 {
+            font-size: 36px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+        }
+
+        .company-hero p {
+            color: var(--color-text-gray);
+            font-size: 16px;
+            max-width: 500px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .section {
+            margin-bottom: 48px;
+        }
+
+        .section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            color: var(--color-total-black);
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-title i {
+            color: var(--color-brand-blue);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .stat-card {
+            background: var(--color-gray);
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--color-brand-blue);
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            color: var(--color-text-gray);
+            font-size: 14px;
+        }
+
+        .service-card {
+            background: var(--color-gray);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 16px;
+            transition: all 0.3s ease;
+            display: block;
+        }
+
+        .service-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .service-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+        }
+
+        .service-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        .service-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--color-total-black);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .service-name i {
+            color: var(--color-brand-blue);
+        }
+
+        .service-description {
+            color: var(--color-text-gray);
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        .contact-section {
+            background: var(--color-gray);
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+        }
+
+        .contact-section h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .contact-section p {
+            color: var(--color-text-gray);
+            font-size: 15px;
+            margin-bottom: 24px;
+        }
+
+        .contact-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+
+        .contact-btn.primary {
+            background: var(--color-brand-blue);
+            color: white;
+        }
+
+        .contact-btn.primary:hover {
+            background: #1f5fd9;
+            transform: translateY(-1px);
+        }
+
+        .contact-btn.secondary {
+            background: var(--color-white);
+            color: var(--color-total-black);
+        }
+
+        .contact-btn.secondary:hover {
+            background: #e5e5e5;
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 768px) {
+            .company-container {
+                padding: 24px;
+            }
+
+            .company-hero h1 {
+                font-size: 28px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <i class="fab fa-github-alt"></i>
+                <span>NEFORCEO</span>
+            </a>
+            <button class="nav-toggle" id="navToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="project.html" class="nav-link">Projects</a></li>
+                <li><a href="company.html" class="nav-link">Company</a></li>
+            </ul>
+            <div class="nav-social">
+                <a href="https://github.com/neforceo" target="_blank"><i class="fab fa-github-alt"></i></a>
+                <a href="https://t.me/neforndu" target="_blank"><i class="fab fa-telegram"></i></a>
+                <a href="https://vk.com/neforceo" target="_blank"><i class="fab fa-vk"></i></a>
+                <a href="mailto:n7for8572@gmail.com"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </nav>
+
+
+    <main class="main-content">
+        <div class="company-container">
+            <div class="company-hero">
+                <div class="company-badge">
+                    <i class="fas fa-check-circle"></i>
+                    Open for Collaboration
+                </div>
+                <h1>Building the Future Together</h1>
+                <p>I create modern tools for developers. Always open to new projects and partnerships.</p>
+            </div>
+
+            <section class="section">
+                <h2 class="section-title"><i class="fas fa-rocket"></i> What I Do</h2>
+
+                <div class="service-card">
+                    <div class="service-header">
+                        <span class="service-name"><i class="fas fa-globe"></i> Web Development</span>
+                    </div>
+                    <p class="service-description">Full-cycle development — from website design to deployment. Creating modern web applications, APIs and services.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-header">
+                        <span class="service-name"><i class="fab fa-python"></i> Python Development</span>
+                    </div>
+                    <p class="service-description">High-performance libraries and SDK development. Async programming, FastAPI, httpx and more.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-header">
+                        <span class="service-name"><i class="fas fa-robot"></i> Telegram AI Bots</span>
+                    </div>
+                    <p class="service-description">Smart bots with artificial intelligence integration. ChatGPT, Claude and other LLMs for automation.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-header">
+                        <span class="service-name"><i class="fas fa-shield-alt"></i> Telegram VPN Bots</span>
+                    </div>
+                    <p class="service-description">VPN bots development for Telegram. Proxy servers, tunneling and secure connections.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-header">
+                        <span class="service-name"><i class="fas fa-comments"></i> Telegram Bots</span>
+                    </div>
+                    <p class="service-description">Any Telegram bots creation — shops, automation, admin panels, parsing and integrations.</p>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title"><i class="fas fa-tools"></i> Tech Stack</h2>
+
+                <div class="service-card">
+                    <div class="service-header">
+                        <span class="service-name"><i class="fab fa-python"></i> Python</span>
+                    </div>
+                    <p class="service-description">FastAPI, httpx, aiogram, pyrogram, discord.py, PIL, aiohttp, pydantic</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-header">
+                        <span class="service-name"><i class="fas fa-server"></i> Backend</span>
+                    </div>
+                    <p class="service-description">FastAPI, Django, Flask, PostgreSQL, MongoDB, Redis, Docker, Linux</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-header">
+                        <span class="service-name"><i class="fas fa-cloud"></i> DevOps & Cloud</span>
+                    </div>
+                    <p class="service-description">Docker, GitHub Actions, Nginx, SSL/TLS, AWS, VPS, CI/CD</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-header">
+                        <span class="service-name"><i class="fab fa-js"></i> Frontend & Other</span>
+                    </div>
+                    <p class="service-description">JavaScript, React, HTML/CSS, VS Code extensions, REST APIs, GraphQL</p>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="contact-section">
+                    <h3>Let's Discuss Your Project</h3>
+                    <p>Write to me and we'll find the best solution together</p>
+                    
+                    <div class="contact-buttons">
+                        <a href="mailto:n7for8572@gmail.com" class="contact-btn primary">
+                            <i class="fas fa-envelope"></i> Email
+                        </a>
+                        <a href="https://t.me/neforndu" target="_blank" class="contact-btn secondary">
+                            <i class="fab fa-telegram"></i> Telegram
+                        </a>
+                        <a href="https://github.com/ndugram" target="_blank" class="contact-btn secondary">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+
+    <footer class="footer">
+        <div class="footer-social">
+            <a href="https://github.com/neforceo" target="_blank"><i class="fab fa-github-alt"></i></a>
+            <a href="https://t.me/neforndu" target="_blank"><i class="fab fa-telegram"></i></a>
+            <a href="https://vk.com/neforceo" target="_blank"><i class="fab fa-vk"></i></a>
+            <a href="mailto:n7for8572@gmail.com"><i class="fas fa-envelope"></i></a>
+        </div>
+        <p class="footer-text">© 2026 NEFORCEO. All rights reserved.</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
