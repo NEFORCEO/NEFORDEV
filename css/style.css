@@ -3,21 +3,12 @@
     --font-manrope: 'Manrope', system-ui, sans-serif;
     --color-brand-green: #30fc9d;
     --color-brand-blue: #2e73ff;
-    --color-total-black: #1e1e1e;
-    --color-text-gray: #9f9f9f;
-    --color-gray: #f4f4f4;
-    --color-white: #ffffff;
+    --color-total-black: #ffffff;
+    --color-text-gray: #8a8a8a;
+    --color-gray: #131217;
+    --color-white: #1c1c24;
     --container-max: 1408px;
     --md-nav-height: 56px;
-}
-
-@media (prefers-color-scheme: dark) {
-    :root {
-        --color-gray: #1a1a1a;
-        --color-white: #242424;
-        --color-total-black: #ffffff;
-        --color-text-gray: #8a8a8a;
-    }
 }
 
 * {
