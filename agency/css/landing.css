@@ -340,17 +340,18 @@ header {
 
     html,
     body {
-        overflow: hidden;
+        overflow-x: hidden;
+        overflow-y: auto;
     }
 
     .container {
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
         min-height: 100vh;
         min-height: 100dvh;
-        padding: 12px;
+        padding: 20px 12px;
     }
 
     header {
