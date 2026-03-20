@@ -363,9 +363,9 @@ header {
     }
 
     .landing-card {
-        padding: 12px 10px 8px 10px;
-        margin: 0 8px;
-        max-width: 300px;
+        padding: 20px 16px 16px 16px;
+        margin: 0;
+        max-width: 100%;
     }
 
     .hero-title {
