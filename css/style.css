@@ -11,6 +11,14 @@
     --md-nav-height: 56px;
 }
 
+/* Light Theme */
+[data-theme="light"] {
+    --color-gray: #f5f5f7;
+    --color-white: #ffffff;
+    --color-total-black: #1c1c24;
+    --color-text-gray: #6b6b6b;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -501,4 +509,102 @@ code {
 .home-container,
 .about-container {
     animation: fade-in-up 0.6s ease-out forwards;
+}
+
+/* ============================================
+   Theme Toggle
+   ============================================ */
+.theme-toggle {
+    position: relative;
+    width: 44px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: transparent;
+    border: none;
+    color: var(--color-total-black);
+    overflow: hidden;
+}
+
+.theme-toggle:hover {
+    background: rgba(46, 115, 255, 0.1);
+}
+
+.theme-toggle i {
+    font-size: 1.1rem;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.theme-toggle .sun-icon {
+    position: absolute;
+    opacity: 0;
+    transform: rotate(-90deg) scale(0.5);
+}
+
+.theme-toggle .moon-icon {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+}
+
+/* Light theme - show sun, hide moon */
+[data-theme="light"] .theme-toggle .sun-icon {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+}
+
+[data-theme="light"] .theme-toggle .moon-icon {
+    opacity: 0;
+    transform: rotate(90deg) scale(0.5);
+}
+
+/* Theme transition for whole page */
+body,
+.navbar,
+.main-content,
+.footer,
+.home-container,
+.about-container {
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+[data-theme="light"] .navbar::before,
+[data-theme="light"] .navbar::after {
+    background: #ffffff;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .nav-logo,
+[data-theme="light"] .nav-link,
+[data-theme="light"] .nav-social a,
+[data-theme="light"] .nav-toggle {
+    color: #1c1c24;
+}
+
+[data-theme="light"] .profile-img {
+    border-color: #e0e0e0;
+}
+
+[data-theme="light"] .footer-social a {
+    background: #e8e8ec;
+}
+
+[data-theme="light"] .footer-social a:hover {
+    background: rgba(46, 115, 255, 0.1);
+}
+
+[data-theme="light"] .about-divider {
+    border-color: #e8e8ec;
+}
+
+[data-theme="light"] .tech-tag {
+    background: #e8e8ec;
+}
+
+[data-theme="light"] .tech-tag:hover {
+    background: var(--color-brand-blue);
+    color: white;
 }
