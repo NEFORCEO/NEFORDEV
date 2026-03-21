@@ -608,3 +608,123 @@ body,
     background: var(--color-brand-blue);
     color: white;
 }
+
+/* ============================================
+   Preloader
+   ============================================ */
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--color-gray);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.preloader.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.preloader-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+
+.preloader-spinner {
+    position: relative;
+    width: 60px;
+    height: 60px;
+}
+
+.spinner-ring {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 3px solid transparent;
+    border-radius: 50%;
+    animation: spinner-rotate 1.5s linear infinite;
+}
+
+.spinner-ring:nth-child(1) {
+    border-top-color: var(--color-brand-blue);
+    animation-delay: 0s;
+}
+
+.spinner-ring:nth-child(2) {
+    border-right-color: var(--color-brand-green);
+    animation-delay: 0.15s;
+    width: 46px;
+    height: 46px;
+    top: 7px;
+    left: 7px;
+}
+
+.spinner-ring:nth-child(3) {
+    border-bottom-color: var(--color-brand-blue);
+    animation-delay: 0.3s;
+    width: 32px;
+    height: 32px;
+    top: 14px;
+    left: 14px;
+}
+
+@keyframes spinner-rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.preloader-text {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-text-gray);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.preloader-dots {
+    display: flex;
+    gap: 8px;
+}
+
+.preloader-dots span {
+    width: 6px;
+    height: 6px;
+    background: var(--color-brand-blue);
+    border-radius: 50%;
+    animation: dot-pulse 1.4s ease-in-out infinite;
+}
+
+.preloader-dots span:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.preloader-dots span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.preloader-dots span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes dot-pulse {
+    0%, 80%, 100% {
+        transform: scale(0.6);
+        opacity: 0.4;
+    }
+    40% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
