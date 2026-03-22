@@ -2,6 +2,7 @@ name: Telegram Notification
 
 on:
   push:
+    branches: [master]
     tags:
       - "v*"
 
@@ -23,7 +24,7 @@ jobs:
         run: |
           MESSAGE="🚀 *Deploy Successful!*
 
-          🌐 *Site:* [neforceo.ilnazik.dev](https://neforceo.ilnazik.dev)
+          🌐 *Site:* [neforceo.ilnazil.dev](https://neforceo.ilnazil.dev)
 
           📦 *Release:* ${{ env.TAG }}
 
