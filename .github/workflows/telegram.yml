@@ -1,0 +1,33 @@
+name: Telegram Notification
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Get latest release info
+        id: release
+        run: |
+          TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0")
+          echo "TAG=$TAG" >> $GITHUB_OUTPUT
+          
+      - name: Send Telegram notification
+        uses: appleboy/telegram-action@v0.1.1
+        with:
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          message: |
+            🚀 **Deploy Successful!**
+            
+            🌐 **Site:** [neforceo.ilnazik.dev](https://neforceo.ilnazik.dev)
+            
+            📦 **Release:** ${{ steps.release.outputs.TAG }}
+
+            👤 **Author:** ${{ github.actor }}
+            🕐 **Time:** ${{ github.event.head_commit.timestamp }}
+            
+            🔗 **Release:** ${{ github.server_url }}/${{ github.repository }}/releases/tag/${{ steps.release.outputs.TAG }}
