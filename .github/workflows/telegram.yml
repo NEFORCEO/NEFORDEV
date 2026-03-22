@@ -17,7 +17,7 @@ jobs:
       - name: Get latest tag
         run: |
           git fetch --tags
-          TAG=$(git describe --tags --abbrev=0)
+          TAG=$(git describe --tags --abbrev=0 --always)
           echo "TAG=$TAG" >> $GITHUB_ENV
 
       - name: Send Telegram notification
