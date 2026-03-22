@@ -37,13 +37,15 @@ jobs:
       
     steps:
       - uses: actions/checkout@v4
-      
+        with:
+          fetch-depth: 0
+          
       - name: Get latest tag
         id: get_tag
         run: |
-          git fetch --tags
           TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0")
           echo "TAG=$TAG" >> $GITHUB_OUTPUT
+          echo "Latest tag: $TAG"
           
       - name: Bump version
         id: bump_version
@@ -56,9 +58,17 @@ jobs:
           PATCH=$((PATCH + 1))
           NEW_TAG="v${MAJOR}.${MINOR}.${PATCH}"
           echo "NEW_TAG=$NEW_TAG" >> $GITHUB_OUTPUT
+          echo "New tag: $NEW_TAG"
+          
+      - name: Push new tag
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git tag ${{ steps.bump_version.outputs.NEW_TAG }}
+          git push origin ${{ steps.bump_version.outputs.NEW_TAG }}
           
       - name: Create Release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ steps.bump_version.outputs.NEW_TAG }}
           generate_release_notes: true
