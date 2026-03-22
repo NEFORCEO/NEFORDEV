@@ -47,7 +47,20 @@ jobs:
           echo "TAG=$TAG" >> $GITHUB_OUTPUT
           echo "Latest tag: $TAG"
           
+      - name: Check changed files
+        id: changes
+        run: |
+          git fetch origin master --depth=2
+          CHANGES=$(git diff --name-only origin/master...HEAD -- '.github/**' ':!.github/workflows/deploy.yml' || true)
+          if [ -z "$CHANGES" ]; then
+            echo "skip=false" >> $GITHUB_OUTPUT
+          else
+            echo "skip=true" >> $GITHUB_OUTPUT
+            echo "Changed files in .github: $CHANGES"
+          fi
+          
       - name: Bump version
+        if: steps.changes.outputs.skip == 'false'
         id: bump_version
         run: |
           CURRENT_TAG=${{ steps.get_tag.outputs.TAG }}
@@ -61,6 +74,7 @@ jobs:
           echo "New tag: $NEW_TAG"
           
       - name: Push new tag
+        if: steps.changes.outputs.skip == 'false'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -68,6 +82,7 @@ jobs:
           git push origin ${{ steps.bump_version.outputs.NEW_TAG }}
           
       - name: Create Release
+        if: steps.changes.outputs.skip == 'false'
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ steps.bump_version.outputs.NEW_TAG }}
@@ -76,10 +91,11 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Wait for tag propagation
+        if: steps.changes.outputs.skip == 'false'
         run: sleep 15
           
       - name: Send Telegram notification
-        if: success()
+        if: success() && steps.changes.outputs.skip == 'false'
         run: |
           git fetch --tags
           TAG="${{ steps.bump_version.outputs.NEW_TAG }}"
