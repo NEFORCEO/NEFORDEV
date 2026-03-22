@@ -19,7 +19,10 @@ jobs:
           node-version: '20'
           
       - name: Install ESLint
-        run: npm install -g eslint
-        
+        run: npm install -g eslint@8
+      
       - name: Run ESLint
-        run: eslint js/*.js --ignore-pattern "**/node_modules/**"
+        run: |
+          npm init -y
+          npm install eslint@8 --save-dev
+          npx eslint js/*.js
