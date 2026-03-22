@@ -85,7 +85,7 @@ jobs:
           TAG="${{ steps.bump_version.outputs.NEW_TAG }}"
           MESSAGE="🚀 *Deploy Successful!*
 
-            🌐 *Site:* [neforceo.ilnazil.dev](https://neforceo.ilnazil.dev)
+            🌐 *Site:* [neforceo.ilnazilk.dev](https://neforceo.ilnazik.dev)
 
             📦 *Release:* ${TAG}
 
