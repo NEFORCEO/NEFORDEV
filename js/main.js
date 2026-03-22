@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Preloader
     const preloader = document.getElementById('preloader');
     
     window.addEventListener('load', function() {
