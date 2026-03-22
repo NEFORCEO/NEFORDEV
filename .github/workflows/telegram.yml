@@ -11,27 +11,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Get latest tag
-        run: |
-          git fetch --tags
-          TAG=$(git describe --tags --abbrev=0 --always)
-          echo "TAG=$TAG" >> $GITHUB_ENV
-
       - name: Send Telegram notification
         run: |
+          if [[ "${{ github.ref }}" == refs/tags/v* ]]; then
+            TAG="${{ github.ref_name }}"
+          else
+            TAG="latest"
+          fi
+          
           MESSAGE="🚀 *Deploy Successful!*
 
           🌐 *Site:* [neforceo.ilnazil.dev](https://neforceo.ilnazil.dev)
 
-          📦 *Release:* ${{ env.TAG }}
+          📦 *Release:* ${TAG}
 
           👤 *Author:* ${{ github.actor }}
           🕐 *Time:* ${{ github.event.head_commit.timestamp }}
 
-          🔗 *Release:* https://github.com/${{ github.repository }}/releases/tag/${{ env.TAG }}"
+          🔗 *Release:* https://github.com/${{ github.repository }}/releases/tag/${TAG}"
 
           curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
             -d "chat_id=${{ secrets.TELEGRAM_CHAT_ID }}" \
