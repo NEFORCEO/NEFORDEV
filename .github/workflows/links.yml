@@ -1,0 +1,29 @@
+name: Check Links
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  link-checker:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          
+      - name: Install linkchecker
+        run: pip install linkchecker
+        
+      - name: Run Link Checker
+        run: |
+          python -m http.server 8080 &
+          sleep 2
+          linkchecker http://localhost:8080 --ignore-url="http://localhost:8080" -r1
+          pkill -f "http.server 8080"
