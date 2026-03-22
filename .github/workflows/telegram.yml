@@ -3,15 +3,28 @@ name: Telegram Notification
 on:
   push:
     tags:
-      - 'v*'
+      - "v*"
 
 jobs:
   notify:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Send Telegram notification
-        run: >
-          TAG="${{ github.ref_name }}" &&
-          MESSAGE="🚀 <b>Deploy Successful!</b>%0A%0A🌐 <b>Site:</b> <a href='https://neforceo.ilnazil.dev'>neforceo.ilnazil.dev</a>%0A%0A📦 <b>Release:</b> ${TAG}%0A%0A👤 <b>Author:</b> ${{ github.actor }}%0A🕐 <b>Time:</b> ${{ github.event.head_commit.timestamp }}%0A%0A🔗 <b>Release:</b> ${{ github.server_url }}/${{ github.repository }}/releases/tag/${TAG}" &&
-          curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" -d "chat_id=${{ secrets.TELEGRAM_CHAT_ID }}" -d "text=${MESSAGE}" -d "parse_mode=HTML"
+        run: |
+          TAG="${{ github.ref_name }}"
+
+          MESSAGE="<b>🚀 Deploy Successful!</b>
+          <b>🌐 Site:</b> <a href='https://neforceo.ilnazik.dev'>neforceo.ilnazik.dev</a>
+
+          <b>📦 Release:</b> ${TAG}
+
+          <b>👤 Author:</b> ${{ github.actor }}
+          <b>🕐 Time:</b> ${{ github.event.head_commit.timestamp }}
+
+          <b>🔗 Release:</b> https://github.com/${{ github.repository }}/releases/tag/${TAG}"
+
+          curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
+            -d "chat_id=${{ secrets.TELEGRAM_CHAT_ID }}" \
+            --data-urlencode "text=${MESSAGE}" \
+            -d "parse_mode=HTML"
