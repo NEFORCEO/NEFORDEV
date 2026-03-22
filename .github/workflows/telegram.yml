@@ -10,21 +10,29 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Get latest tag
+        run: |
+          git fetch --tags
+          TAG=$(git describe --tags --abbrev=0)
+          echo "TAG=$TAG" >> $GITHUB_ENV
+
       - name: Send Telegram notification
         run: |
-          TAG="${{ github.ref_name }}"
+          MESSAGE="🚀 *Deploy Successful!*
 
-          MESSAGE="<b>🚀 Deploy Successful!</b>
-          <b>🌐 Site:</b> <a href='https://neforceo.ilnazik.dev'>neforceo.ilnazik.dev</a>
+          🌐 *Site:* [neforceo.ilnazik.dev](https://neforceo.ilnazik.dev)
 
-          <b>📦 Release:</b> ${TAG}
+          📦 *Release:* ${{ env.TAG }}
 
-          <b>👤 Author:</b> ${{ github.actor }}
-          <b>🕐 Time:</b> ${{ github.event.head_commit.timestamp }}
+          👤 *Author:* ${{ github.actor }}
+          🕐 *Time:* ${{ github.event.head_commit.timestamp }}
 
-          <b>🔗 Release:</b> https://github.com/${{ github.repository }}/releases/tag/${TAG}"
+          🔗 *Release:* https://github.com/${{ github.repository }}/releases/tag/${{ env.TAG }}"
 
           curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
             -d "chat_id=${{ secrets.TELEGRAM_CHAT_ID }}" \
             --data-urlencode "text=${MESSAGE}" \
-            -d "parse_mode=HTML"
+            -d "parse_mode=Markdown"
