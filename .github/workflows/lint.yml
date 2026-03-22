@@ -23,6 +23,5 @@ jobs:
       
       - name: Run ESLint
         run: |
-          npm init -y
           npm install eslint@8 --save-dev
           npx eslint js/*.js
