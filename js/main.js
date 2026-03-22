@@ -27,7 +27,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         localStorage.setItem('theme', newTheme);
-        updateStarColor();
     }
     
     if (themeToggle) {
