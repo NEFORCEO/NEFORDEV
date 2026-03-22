@@ -85,16 +85,17 @@ jobs:
           TAG="${{ steps.bump_version.outputs.NEW_TAG }}"
           MESSAGE="🚀 *Deploy Successful!*
 
-            🌐 *Site:* [neforceo.ilnazilk.dev](https://neforceo.ilnazik.dev)
+          🌐 *Site:* neforceo.ilnazik.dev
 
-            📦 *Release:* ${TAG}
+          📦 *Release:* ${TAG}
 
-            👤 *Author:* ${{ github.actor }}
-            🕐 *Time:* ${{ github.event.head_commit.timestamp }}
+          👤 *Author:* ${{ github.actor }}
+          🕐 *Time:* ${{ github.event.head_commit.timestamp }}"
 
-            🔗 *Release:* https://github.com/${{ github.repository }}/releases/tag/${TAG}"
+          KEYBOARD='{"inline_keyboard":[[{"text":"📦 Repository","url":"https://github.com/'${{ github.repository }}'"}]]}'
 
           curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
             -d "chat_id=${{ secrets.TELEGRAM_CHAT_ID }}" \
             --data-urlencode "text=${MESSAGE}" \
-            -d "parse_mode=Markdown"
+            -d "parse_mode=Markdown" \
+            --data-urlencode "reply_markup=${KEYBOARD}"
